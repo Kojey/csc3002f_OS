@@ -22,19 +22,23 @@ public class ProcessControlBlockImpl implements ProcessControlBlock {
 	private int PID, priority, PC;
 	private String programName;
 	private State state;
-	private ArrayList<Instruction> instruction;
+	private ArrayList<Instruction> instruction = new ArrayList<Instruction>();
 	
 	public static ProcessControlBlock loadProgram(String filename) throws IOException, FileNotFoundException{
 		try (BufferedReader buffer = new BufferedReader(new FileReader(filename))){
 			String line;
 			String [] lines;
+			ProcessControlBlockImpl PCB = new ProcessControlBlockImpl();
 			while((line=buffer.readLine())!=null){
 				lines = line.split(" ");
 				switch(lines.length){
 				case 2: // CPU Instruction
-					
+					if(!lines[0].equals("CPU"))return null;
+					PCB.instruction.add(new CPUInstruction(Integer.parseInt(lines[1])));
 					break;
 				case 3: // IO Instruction
+					if(!lines[0].equals("IO"))return null;
+					PCB.instruction.add(new IOInstruction(Integer.parseInt(lines[1]),Integer.parseInt(lines[2])));
 					break;
 				default: return null;
 				}
