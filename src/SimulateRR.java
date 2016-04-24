@@ -23,7 +23,7 @@ public class SimulateRR {
 	
 	// Get configuration
 	Scanner scanner = new Scanner(System.in);
-	System.out.println("*** FCFS Simulator ***");
+	System.out.println("*** RR Simulator ***");
 	System.out.print("Enter configuration file name: ");
 	configFileName = scanner.nextLine();
 	System.out.print("Enter slice time: ");
