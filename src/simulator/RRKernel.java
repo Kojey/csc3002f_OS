@@ -21,6 +21,7 @@ public class RRKernel implements Kernel {
 
     private Deque<ProcessControlBlock> readyQueue;
     private long sliceTime;
+    private TimeOutEvent event;
     
     public RRKernel() {
 		// Set up the ready queue.
@@ -31,27 +32,29 @@ public class RRKernel implements Kernel {
 		
 		// Perform context switch, swapping process
 		// currently on CPU with one at front of ready queue.
-		CPU cpu = Config.getCPU();
+//		CPU cpu = Config.getCPU();
 		try {
 			ProcessControlBlock process = this.readyQueue.pop();
-			ProcessControlBlock outProcess = cpu.contextSwitch(process);
+			if( !Config.getCPU().isIdle() && (Config.getCPU().getCurrentProcess().getPID()==process.getPID())) process.setState(State.RUNNING);
+			ProcessControlBlock outProcess = Config.getCPU().contextSwitch(process);			
+			process.setState(State.RUNNING);
 			// Set timeOut
-			TimeOutEvent event = new TimeOutEvent(Config.getSystemTimer().getSystemTime()+this.sliceTime, process.getPID(), 
+			this.event = new TimeOutEvent(Config.getSystemTimer().getSystemTime()+this.sliceTime, Config.getCPU().getCurrentProcess().getPID(), 
 			      new EventHandler<TimeOutEvent>() {
 	                public void process(TimeOutEvent event) {
-		                    TRACE.INTERRUPT(InterruptHandler.TIME_OUT, Config.getCPU().getCurrentProcess());
-					        Config.getSimulationClock().logInterrupt();
-					        interrupt(InterruptHandler.TIME_OUT,Config.getCPU().getCurrentProcess());
-					        TRACE.INTERRUPT_END();
-	                }                            
+	                		TRACE.INTERRUPT(InterruptHandler.TIME_OUT, Config.getCPU().getCurrentProcess());
+			                Config.getSimulationClock().logInterrupt();
+			                interrupt(InterruptHandler.TIME_OUT,Config.getCPU().getCurrentProcess());
+			                TRACE.INTERRUPT_END();
+	                }  
+	                
 			});
-			Config.getEventScheduler().schedule(event);			
-			process.setState(State.RUNNING);
+			Config.getEventScheduler().schedule(this.event);
 			return outProcess;
 		} 
 		// If ready queue is empty then CPU goes idle ( holds a null value).
 		// Returns process removed from CPU.
-		catch (NoSuchElementException e) {return cpu.contextSwitch(null);}
+		catch (NoSuchElementException e) {return Config.getCPU().contextSwitch(null);}
     }
             
     
@@ -82,6 +85,8 @@ public class RRKernel implements Kernel {
                 break;
              case IO_REQUEST: 
                 {
+                	// Cancel Interrupt
+                	Config.getEventScheduler().cancel(this.event);
 					// IO request has come from process currently on the CPU.
 					// Get PCB from CPU.
                 	ProcessControlBlock process = Config.getCPU().getCurrentProcess();
@@ -99,6 +104,8 @@ public class RRKernel implements Kernel {
                 break;
              case TERMINATE_PROCESS:
                 {
+                	// Cancel Interrupt
+                	Config.getEventScheduler().cancel(this.event);
 					// Process on the CPU has terminated.
 					// Get PCB from CPU.
 					// Set status to TERMINATED.
@@ -117,10 +124,13 @@ public class RRKernel implements Kernel {
     public void interrupt(int interruptType, Object... varargs){
         switch (interruptType) {
             case TIME_OUT:
+            	ProcessControlBlock process_ = (ProcessControlBlock)varargs[0];
+            	process_.setState(State.READY);
+            	this.readyQueue.add(process_);
+            	this.dispatch();
             	break;
-                //throw new IllegalArgumentException("FCFSKernel:interrupt("+interruptType+"...): this kernel does not suppor timeouts.");
+            
             case WAKE_UP:
-				// IODevice has finished an IO request for a process.
 				// Retrieve the PCB of the process (varargs[1]), set its state
 				// to READY, put it on the end of the ready queue.
             	ProcessControlBlock process = (ProcessControlBlock)varargs[1];
@@ -130,7 +140,7 @@ public class RRKernel implements Kernel {
             	if(Config.getCPU().isIdle())this.dispatch();
                 break;
             default:
-                throw new IllegalArgumentException("FCFSKernel:interrupt("+interruptType+"...): unknown type.");
+                throw new IllegalArgumentException("RRKernel:interrupt("+interruptType+"...): unknown type.");
         }
     }
     
