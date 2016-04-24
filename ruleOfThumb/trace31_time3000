@@ -1,0 +1,122 @@
+*** RR Simulator ***
+Enter configuration file name: ruleOfThumb/config.cfg
+Enter slice time: 3000
+Enter cost of system call: 1
+Enter cost of context switch: 3
+Enter trace level: 31
+Time: 0000000000 Kernel: SysCall(MAKE_DEVICE, id=1,name="disk")
+Time: 0000000001 Kernel: SysCall complete
+Time: 0000000000 Kernel: SysCall(EXECVE, name="ruleOfThumb/programA.prg")
+Time: 0000000001 Kernel: Context Switch {Idle}, process(pid=1, state=READY, name="ruleOfThumb/programA.prg")).
+Time: 0000000004 Kernel: SysCall complete
+Time: 0000002004 Kernel: SysCall(IO_REQUEST, device(id=1), duration=4000, process(pid=1, state=RUNNING, name="ruleOfThumb/programA.prg"))
+Time: 0000002005 Kernel: Context Switch process(pid=1, state=WAITING, name="ruleOfThumb/programA.prg"), {Idle}).
+Time: 0000002008 Kernel: SysCall complete
+Time: 0000006005 Kernel: Interrupt(WAKE_UP, device(id=1), process(pid=1, state=WAITING, name="ruleOfThumb/programA.prg"))
+Time: 0000006006 Kernel: Context Switch {Idle}, process(pid=1, state=READY, name="ruleOfThumb/programA.prg")).
+Time: 0000006009 Kernel: Interrupt exit
+Time: 0000009009 Kernel: Interrupt(TIME_OUT, process(pid=1, state=RUNNING, name="ruleOfThumb/programA.prg"))
+Time: 0000009010 Kernel: Context Switch process(pid=1, state=RUNNING, name="ruleOfThumb/programA.prg"), process(pid=1, state=RUNNING, name="ruleOfThumb/programA.prg")).
+Time: 0000009013 Kernel: Interrupt exit
+Time: 0000011013 Kernel: SysCall(IO_REQUEST, device(id=1), duration=7000, process(pid=1, state=RUNNING, name="ruleOfThumb/programA.prg"))
+Time: 0000011014 Kernel: Context Switch process(pid=1, state=WAITING, name="ruleOfThumb/programA.prg"), {Idle}).
+Time: 0000011017 Kernel: SysCall complete
+Time: 0000018014 Kernel: Interrupt(WAKE_UP, device(id=1), process(pid=1, state=WAITING, name="ruleOfThumb/programA.prg"))
+Time: 0000018015 Kernel: Context Switch {Idle}, process(pid=1, state=READY, name="ruleOfThumb/programA.prg")).
+Time: 0000018018 Kernel: Interrupt exit
+Time: 0000021018 Kernel: Interrupt(TIME_OUT, process(pid=1, state=RUNNING, name="ruleOfThumb/programA.prg"))
+Time: 0000021019 Kernel: Context Switch process(pid=1, state=RUNNING, name="ruleOfThumb/programA.prg"), process(pid=1, state=RUNNING, name="ruleOfThumb/programA.prg")).
+Time: 0000021022 Kernel: Interrupt exit
+Time: 0000021522 Kernel: SysCall(IO_REQUEST, device(id=1), duration=6000, process(pid=1, state=RUNNING, name="ruleOfThumb/programA.prg"))
+Time: 0000021523 Kernel: Context Switch process(pid=1, state=WAITING, name="ruleOfThumb/programA.prg"), {Idle}).
+Time: 0000021526 Kernel: SysCall complete
+Time: 0000027523 Kernel: Interrupt(WAKE_UP, device(id=1), process(pid=1, state=WAITING, name="ruleOfThumb/programA.prg"))
+Time: 0000027524 Kernel: Context Switch {Idle}, process(pid=1, state=READY, name="ruleOfThumb/programA.prg")).
+Time: 0000027527 Kernel: Interrupt exit
+Time: 0000030527 Kernel: SysCall(IO_REQUEST, device(id=1), duration=5000, process(pid=1, state=RUNNING, name="ruleOfThumb/programA.prg"))
+Time: 0000030528 Kernel: Context Switch process(pid=1, state=WAITING, name="ruleOfThumb/programA.prg"), {Idle}).
+Time: 0000030531 Kernel: SysCall complete
+Time: 0000035528 Kernel: Interrupt(WAKE_UP, device(id=1), process(pid=1, state=WAITING, name="ruleOfThumb/programA.prg"))
+Time: 0000035529 Kernel: Context Switch {Idle}, process(pid=1, state=READY, name="ruleOfThumb/programA.prg")).
+Time: 0000035532 Kernel: Interrupt exit
+Time: 0000038032 Kernel: SysCall(IO_REQUEST, device(id=1), duration=1000, process(pid=1, state=RUNNING, name="ruleOfThumb/programA.prg"))
+Time: 0000038033 Kernel: Context Switch process(pid=1, state=WAITING, name="ruleOfThumb/programA.prg"), {Idle}).
+Time: 0000038036 Kernel: SysCall complete
+Time: 0000039033 Kernel: Interrupt(WAKE_UP, device(id=1), process(pid=1, state=WAITING, name="ruleOfThumb/programA.prg"))
+Time: 0000039034 Kernel: Context Switch {Idle}, process(pid=1, state=READY, name="ruleOfThumb/programA.prg")).
+Time: 0000039037 Kernel: Interrupt exit
+Time: 0000041037 Kernel: SysCall(IO_REQUEST, device(id=1), duration=1000, process(pid=1, state=RUNNING, name="ruleOfThumb/programA.prg"))
+Time: 0000041038 Kernel: Context Switch process(pid=1, state=WAITING, name="ruleOfThumb/programA.prg"), {Idle}).
+Time: 0000041041 Kernel: SysCall complete
+Time: 0000042038 Kernel: Interrupt(WAKE_UP, device(id=1), process(pid=1, state=WAITING, name="ruleOfThumb/programA.prg"))
+Time: 0000042039 Kernel: Context Switch {Idle}, process(pid=1, state=READY, name="ruleOfThumb/programA.prg")).
+Time: 0000042042 Kernel: Interrupt exit
+Time: 0000045042 Kernel: Interrupt(TIME_OUT, process(pid=1, state=RUNNING, name="ruleOfThumb/programA.prg"))
+Time: 0000045043 Kernel: Context Switch process(pid=1, state=RUNNING, name="ruleOfThumb/programA.prg"), process(pid=1, state=RUNNING, name="ruleOfThumb/programA.prg")).
+Time: 0000045046 Kernel: Interrupt exit
+Time: 0000047046 Kernel: SysCall(IO_REQUEST, device(id=1), duration=6000, process(pid=1, state=RUNNING, name="ruleOfThumb/programA.prg"))
+Time: 0000047047 Kernel: Context Switch process(pid=1, state=WAITING, name="ruleOfThumb/programA.prg"), {Idle}).
+Time: 0000047050 Kernel: SysCall complete
+Time: 0000053047 Kernel: Interrupt(WAKE_UP, device(id=1), process(pid=1, state=WAITING, name="ruleOfThumb/programA.prg"))
+Time: 0000053048 Kernel: Context Switch {Idle}, process(pid=1, state=READY, name="ruleOfThumb/programA.prg")).
+Time: 0000053051 Kernel: Interrupt exit
+Time: 0000056051 Kernel: Interrupt(TIME_OUT, process(pid=1, state=RUNNING, name="ruleOfThumb/programA.prg"))
+Time: 0000056052 Kernel: Context Switch process(pid=1, state=RUNNING, name="ruleOfThumb/programA.prg"), process(pid=1, state=RUNNING, name="ruleOfThumb/programA.prg")).
+Time: 0000056055 Kernel: Interrupt exit
+Time: 0000056555 Kernel: SysCall(IO_REQUEST, device(id=1), duration=3000, process(pid=1, state=RUNNING, name="ruleOfThumb/programA.prg"))
+Time: 0000056556 Kernel: Context Switch process(pid=1, state=WAITING, name="ruleOfThumb/programA.prg"), {Idle}).
+Time: 0000056559 Kernel: SysCall complete
+Time: 0000059556 Kernel: Interrupt(WAKE_UP, device(id=1), process(pid=1, state=WAITING, name="ruleOfThumb/programA.prg"))
+Time: 0000059557 Kernel: Context Switch {Idle}, process(pid=1, state=READY, name="ruleOfThumb/programA.prg")).
+Time: 0000059560 Kernel: Interrupt exit
+Time: 0000062560 Kernel: SysCall(IO_REQUEST, device(id=1), duration=3500, process(pid=1, state=RUNNING, name="ruleOfThumb/programA.prg"))
+Time: 0000062561 Kernel: Context Switch process(pid=1, state=WAITING, name="ruleOfThumb/programA.prg"), {Idle}).
+Time: 0000062564 Kernel: SysCall complete
+Time: 0000066061 Kernel: Interrupt(WAKE_UP, device(id=1), process(pid=1, state=WAITING, name="ruleOfThumb/programA.prg"))
+Time: 0000066062 Kernel: Context Switch {Idle}, process(pid=1, state=READY, name="ruleOfThumb/programA.prg")).
+Time: 0000066065 Kernel: Interrupt exit
+Time: 0000068565 Kernel: SysCall(IO_REQUEST, device(id=1), duration=1000, process(pid=1, state=RUNNING, name="ruleOfThumb/programA.prg"))
+Time: 0000068566 Kernel: Context Switch process(pid=1, state=WAITING, name="ruleOfThumb/programA.prg"), {Idle}).
+Time: 0000068569 Kernel: SysCall complete
+Time: 0000069566 Kernel: Interrupt(WAKE_UP, device(id=1), process(pid=1, state=WAITING, name="ruleOfThumb/programA.prg"))
+Time: 0000069567 Kernel: Context Switch {Idle}, process(pid=1, state=READY, name="ruleOfThumb/programA.prg")).
+Time: 0000069570 Kernel: Interrupt exit
+Time: 0000071570 Kernel: SysCall(IO_REQUEST, device(id=1), duration=1500, process(pid=1, state=RUNNING, name="ruleOfThumb/programA.prg"))
+Time: 0000071571 Kernel: Context Switch process(pid=1, state=WAITING, name="ruleOfThumb/programA.prg"), {Idle}).
+Time: 0000071574 Kernel: SysCall complete
+Time: 0000073071 Kernel: Interrupt(WAKE_UP, device(id=1), process(pid=1, state=WAITING, name="ruleOfThumb/programA.prg"))
+Time: 0000073072 Kernel: Context Switch {Idle}, process(pid=1, state=READY, name="ruleOfThumb/programA.prg")).
+Time: 0000073075 Kernel: Interrupt exit
+Time: 0000076075 Kernel: Interrupt(TIME_OUT, process(pid=1, state=RUNNING, name="ruleOfThumb/programA.prg"))
+Time: 0000076076 Kernel: Context Switch process(pid=1, state=RUNNING, name="ruleOfThumb/programA.prg"), process(pid=1, state=RUNNING, name="ruleOfThumb/programA.prg")).
+Time: 0000076079 Kernel: Interrupt exit
+Time: 0000078079 Kernel: SysCall(IO_REQUEST, device(id=1), duration=2000, process(pid=1, state=RUNNING, name="ruleOfThumb/programA.prg"))
+Time: 0000078080 Kernel: Context Switch process(pid=1, state=WAITING, name="ruleOfThumb/programA.prg"), {Idle}).
+Time: 0000078083 Kernel: SysCall complete
+Time: 0000080080 Kernel: Interrupt(WAKE_UP, device(id=1), process(pid=1, state=WAITING, name="ruleOfThumb/programA.prg"))
+Time: 0000080081 Kernel: Context Switch {Idle}, process(pid=1, state=READY, name="ruleOfThumb/programA.prg")).
+Time: 0000080084 Kernel: Interrupt exit
+Time: 0000083084 Kernel: Interrupt(TIME_OUT, process(pid=1, state=RUNNING, name="ruleOfThumb/programA.prg"))
+Time: 0000083085 Kernel: Context Switch process(pid=1, state=RUNNING, name="ruleOfThumb/programA.prg"), process(pid=1, state=RUNNING, name="ruleOfThumb/programA.prg")).
+Time: 0000083088 Kernel: Interrupt exit
+Time: 0000083588 Kernel: SysCall(IO_REQUEST, device(id=1), duration=15000, process(pid=1, state=RUNNING, name="ruleOfThumb/programA.prg"))
+Time: 0000083589 Kernel: Context Switch process(pid=1, state=WAITING, name="ruleOfThumb/programA.prg"), {Idle}).
+Time: 0000083592 Kernel: SysCall complete
+Time: 0000098589 Kernel: Interrupt(WAKE_UP, device(id=1), process(pid=1, state=WAITING, name="ruleOfThumb/programA.prg"))
+Time: 0000098590 Kernel: Context Switch {Idle}, process(pid=1, state=READY, name="ruleOfThumb/programA.prg")).
+Time: 0000098593 Kernel: Interrupt exit
+Time: 0000101593 Kernel: SysCall(IO_REQUEST, device(id=1), duration=1000, process(pid=1, state=RUNNING, name="ruleOfThumb/programA.prg"))
+Time: 0000101594 Kernel: Context Switch process(pid=1, state=WAITING, name="ruleOfThumb/programA.prg"), {Idle}).
+Time: 0000101597 Kernel: SysCall complete
+Time: 0000102594 Kernel: Interrupt(WAKE_UP, device(id=1), process(pid=1, state=WAITING, name="ruleOfThumb/programA.prg"))
+Time: 0000102595 Kernel: Context Switch {Idle}, process(pid=1, state=READY, name="ruleOfThumb/programA.prg")).
+Time: 0000102598 Kernel: Interrupt exit
+Time: 0000105098 Kernel: SysCall(TERMINATE_PROCESS, process(pid=1, state=RUNNING, name="ruleOfThumb/programA.prg"))
+Time: 0000105099 Kernel: Context Switch process(pid=1, state=TERMINATED, name="ruleOfThumb/programA.prg"), {Idle}).
+Time: 0000105102 Kernel: SysCall complete
+System time: 105102
+Kernel time: 144
+User time: 48000
+Idle time: 56958
+Context switches: 36
+CPU utilization: 45.67
