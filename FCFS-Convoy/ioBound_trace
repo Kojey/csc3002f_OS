@@ -1,0 +1,56 @@
+*** FCFS Simulator ***
+Enter configuration file name: FCFS-Convoy/ioBound.cfg
+Enter cost of system call: 1
+Enter cost of context switch: 3
+Enter trace level: 31
+Time: 0000000000 Kernel: SysCall(MAKE_DEVICE, id=1,name="disk")
+Time: 0000000001 Kernel: SysCall complete
+Time: 0000000000 Kernel: SysCall(EXECVE, name="FCFS-Convoy/ioBound.prg")
+Time: 0000000001 Kernel: Context Switch {Idle}, process(pid=1, state=READY, name="FCFS-Convoy/ioBound.prg")).
+Time: 0000000004 Kernel: SysCall complete
+Time: 0000001004 Kernel: SysCall(IO_REQUEST, device(id=1), duration=5000, process(pid=1, state=RUNNING, name="FCFS-Convoy/ioBound.prg"))
+Time: 0000001005 Kernel: Context Switch process(pid=1, state=WAITING, name="FCFS-Convoy/ioBound.prg"), {Idle}).
+Time: 0000001008 Kernel: SysCall complete
+Time: 0000006005 Kernel: Interrupt(WAKE_UP, device(id=1), process(pid=1, state=WAITING, name="FCFS-Convoy/ioBound.prg"))
+Time: 0000006006 Kernel: Context Switch {Idle}, process(pid=1, state=READY, name="FCFS-Convoy/ioBound.prg")).
+Time: 0000006009 Kernel: Interrupt exit
+Time: 0000007009 Kernel: SysCall(IO_REQUEST, device(id=1), duration=4000, process(pid=1, state=RUNNING, name="FCFS-Convoy/ioBound.prg"))
+Time: 0000007010 Kernel: Context Switch process(pid=1, state=WAITING, name="FCFS-Convoy/ioBound.prg"), {Idle}).
+Time: 0000007013 Kernel: SysCall complete
+Time: 0000011010 Kernel: Interrupt(WAKE_UP, device(id=1), process(pid=1, state=WAITING, name="FCFS-Convoy/ioBound.prg"))
+Time: 0000011011 Kernel: Context Switch {Idle}, process(pid=1, state=READY, name="FCFS-Convoy/ioBound.prg")).
+Time: 0000011014 Kernel: Interrupt exit
+Time: 0000013014 Kernel: SysCall(IO_REQUEST, device(id=1), duration=4000, process(pid=1, state=RUNNING, name="FCFS-Convoy/ioBound.prg"))
+Time: 0000013015 Kernel: Context Switch process(pid=1, state=WAITING, name="FCFS-Convoy/ioBound.prg"), {Idle}).
+Time: 0000013018 Kernel: SysCall complete
+Time: 0000017015 Kernel: Interrupt(WAKE_UP, device(id=1), process(pid=1, state=WAITING, name="FCFS-Convoy/ioBound.prg"))
+Time: 0000017016 Kernel: Context Switch {Idle}, process(pid=1, state=READY, name="FCFS-Convoy/ioBound.prg")).
+Time: 0000017019 Kernel: Interrupt exit
+Time: 0000018019 Kernel: SysCall(IO_REQUEST, device(id=1), duration=2000, process(pid=1, state=RUNNING, name="FCFS-Convoy/ioBound.prg"))
+Time: 0000018020 Kernel: Context Switch process(pid=1, state=WAITING, name="FCFS-Convoy/ioBound.prg"), {Idle}).
+Time: 0000018023 Kernel: SysCall complete
+Time: 0000020020 Kernel: Interrupt(WAKE_UP, device(id=1), process(pid=1, state=WAITING, name="FCFS-Convoy/ioBound.prg"))
+Time: 0000020021 Kernel: Context Switch {Idle}, process(pid=1, state=READY, name="FCFS-Convoy/ioBound.prg")).
+Time: 0000020024 Kernel: Interrupt exit
+Time: 0000021024 Kernel: SysCall(IO_REQUEST, device(id=1), duration=3000, process(pid=1, state=RUNNING, name="FCFS-Convoy/ioBound.prg"))
+Time: 0000021025 Kernel: Context Switch process(pid=1, state=WAITING, name="FCFS-Convoy/ioBound.prg"), {Idle}).
+Time: 0000021028 Kernel: SysCall complete
+Time: 0000024025 Kernel: Interrupt(WAKE_UP, device(id=1), process(pid=1, state=WAITING, name="FCFS-Convoy/ioBound.prg"))
+Time: 0000024026 Kernel: Context Switch {Idle}, process(pid=1, state=READY, name="FCFS-Convoy/ioBound.prg")).
+Time: 0000024029 Kernel: Interrupt exit
+Time: 0000026029 Kernel: SysCall(IO_REQUEST, device(id=1), duration=3000, process(pid=1, state=RUNNING, name="FCFS-Convoy/ioBound.prg"))
+Time: 0000026030 Kernel: Context Switch process(pid=1, state=WAITING, name="FCFS-Convoy/ioBound.prg"), {Idle}).
+Time: 0000026033 Kernel: SysCall complete
+Time: 0000029030 Kernel: Interrupt(WAKE_UP, device(id=1), process(pid=1, state=WAITING, name="FCFS-Convoy/ioBound.prg"))
+Time: 0000029031 Kernel: Context Switch {Idle}, process(pid=1, state=READY, name="FCFS-Convoy/ioBound.prg")).
+Time: 0000029034 Kernel: Interrupt exit
+Time: 0000030034 Kernel: SysCall(TERMINATE_PROCESS, process(pid=1, state=RUNNING, name="FCFS-Convoy/ioBound.prg"))
+Time: 0000030035 Kernel: Context Switch process(pid=1, state=TERMINATED, name="FCFS-Convoy/ioBound.prg"), {Idle}).
+Time: 0000030038 Kernel: SysCall complete
+System time: 30038
+Kernel time: 56
+User time: 9000
+Idle time: 20982
+Context switches: 14
+CPU utilization: 29.96
+

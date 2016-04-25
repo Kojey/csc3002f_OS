@@ -1,0 +1,13 @@
+﻿
+1. CONVOY EFFECT
+The convoy effect occurs when smaller process have to wait for longer process in their execution.
+
+1. IO BOUND (refer to “ioBound.prg” for program config and to ioBound_trace for trace)
+At time 6009 a CPU instruction was executed. The CPU had to wait for 11010-6005=5005 time unit to execute another CPU instruction. The shorter instructions in this case the CPU instructions are run first reducing the average waiting time.
+
+2. IO THEN CPU BOUND (refer to “ioToCPUBound.prg” for program config and to ioToCPUBound_trace for trace)
+From the trace it can be seen that the duration of the IO requests are at the start higher than those of the CPU's but then the opposite occurs in later times. As a consequence the CPU utilization is higher for his trace.
+
+2. 80% RULE OF THUMB (refer to “programA.prg” for program config and to trace31_timeX for trace with time slice X)
+The programA.prg is made such that the it is IO bounded at the beginning then balanced then CPU bounded and for traces with X>=4000 the rule of thumb was satified. By varying X from 2000 (20%) to 5000 (100%) it was observed that as X goes from 2000 to 5000, the Kernel time, the Content switch and the System time decreases but the CPU utilization increases but by a negligible value. Above X=4000 (80%) those value change slightly but bellow that value the result of the trace are far different from the result obtained with the 80% rule of thumb. Above the 80% ROT, we get lesser context switch with approximately the same CPU utilization so that is the optimal value.
+
